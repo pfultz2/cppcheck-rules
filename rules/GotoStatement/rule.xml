@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<rule>
+    <tokenlist>normal</tokenlist>
+    <pattern>goto</pattern>
+    <message>
+        <id>GotoStatement</id>
+        <severity>style</severity>
+        <summary>Goto considered harmful.</summary>
+    </message>
+</rule>
