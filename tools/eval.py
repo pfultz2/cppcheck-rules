@@ -1,5 +1,14 @@
 import re, sys
 
+def block():
+    return '({[^{}]*(?1)*[^{}]*})'
+
+def paren():
+    return "\\( [^()]+ \\)"
+
+def name():
+    return '(\\w+ :: )*\\w+'
+
 symbols = {
     '[': '\\[',
     '[[': '[',
@@ -10,7 +19,10 @@ symbols = {
     ')': '\\)',
     '))': ')',
     '++': '\\+\\+',
-    '--': '\\-\\-'
+    '--': '\\-\\-',
+    '{*}': block(),
+    '(*)': paren(),
+    '$name': name()
 }
 
 def q_word(word):
@@ -36,15 +48,7 @@ def q_words(s):
 def q(s):
     return ' '.join(q_words(s))
 
-
-def block():
-    return '({[^{}]*(?1)*[^{}]*})'
-
-def paren():
-    return "\\( [^()]+ \\)"
-
 def for_idx_loop(inner):
-    # return "for \\( \\w+ (\\w+) = \\w+ ; \\1 < \\w+ ; (\\1 \\+\\+|\\+\\+ \\1|\\1 \\-\\-|\\-\\- \\1) \\) {{ {} }}".format(inner)
     return q("for ( $w+ ($w+) = $w+ ; $1 < $w+ ; ($1 ++|++ $1|$1 --|-- $1) ) {{ {} }}").format(inner)
 
 def template_eval(template, **kwargs):
