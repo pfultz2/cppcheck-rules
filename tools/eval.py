@@ -39,8 +39,15 @@ def q_word(word):
 
 def q_words(s):
     words = s.split()
+    skip = False
     for word in words:
-        if '|' in word and not word.startswith('|'):
+        if word == '<%':
+            skip = True
+        if skip:
+            if word == '%>':
+                skip = False
+            yield word
+        elif '|' in word and not word.startswith('|'):
             yield '|'.join([q_word(x) for x in word.split('|')])
         else:
             yield q_word(word)
@@ -62,6 +69,18 @@ def template_eval(template, **kwargs):
         template = template.replace(start+item+end, str(eval(item.strip())))
     return template
 
+def cdata(s):
+    return "<![CDATA[{}]]>".format(s)
+
+def regex_eval(template):
+    start = '<['
+    end = ']>'
+    escaped = (re.escape(start), re.escape(end))
+    mark = re.compile('%s(.*?)%s' % escaped, re.DOTALL)
+    for item in mark.findall(template):
+        template = template.replace(start+item+end, cdata(q(item.strip())))
+    return template
+
 f = open(sys.argv[1]).read()
-r = template_eval(f)
+r = template_eval(regex_eval(f))
 sys.stdout.write(r)
