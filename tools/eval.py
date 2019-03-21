@@ -72,7 +72,7 @@ def q(s):
     return ' '.join(q_words(s))
 
 def for_idx_loop(inner):
-    return q("for ( $w+ ($w+) = $w+ ; $1 < $w+ ; ($1 ++|++ $1|$1 --|-- $1) ) {{ {} }}").format(inner)
+    return q("for ( $type ($w+) = $w+ ; $1 < $w+ ; ($1 ++|++ $1|$1 --|-- $1) ) {{ {} }}").format(inner)
 
 def for_range_loop(inner):
     return q("for ( $type ($w+) : ([^()]+) ) {{ {} }}").format(inner)

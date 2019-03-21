@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <rule>
     <tokenlist>normal</tokenlist>
-    <pattern><![CDATA[for \( \w+ (\w+) = \w+ ; \1 < \w+ ; (\1 \+\+|\+\+ \1|\1 \-\-|\-\- \1) \) { \w+ \[ \1 \] = \w+ \[ \1 \] ; }]]></pattern>
+    <pattern><![CDATA[for \( (?:(?:\w+|<|>|::) )*(?:\w+|>)(?: &|\*)* (\w+) = \w+ ; \1 < \w+ ; (\1 \+\+|\+\+ \1|\1 \-\-|\-\- \1) \) { \w+ \[ \1 \] = \w+ \[ \1 \] ; }]]></pattern>
     <message>
         <id>useStlAlgorithm</id>
         <severity>style</severity>
@@ -10,7 +10,7 @@
 </rule>
 <rule>
     <tokenlist>normal</tokenlist>
-    <pattern><![CDATA[for \( \w+ (\w+) = \w+ ; \1 < \w+ ; (\1 \+\+|\+\+ \1|\1 \-\-|\-\- \1) \) { \w+ \[ \1 \] = \w+ ; }]]></pattern>
+    <pattern><![CDATA[for \( (?:(?:\w+|<|>|::) )*(?:\w+|>)(?: &|\*)* (\w+) = \w+ ; \1 < \w+ ; (\1 \+\+|\+\+ \1|\1 \-\-|\-\- \1) \) { \w+ \[ \1 \] = \w+ ; }]]></pattern>
     <message>
         <id>useStlAlgorithm</id>
         <severity>style</severity>
@@ -19,7 +19,7 @@
 </rule>
 <rule>
     <tokenlist>normal</tokenlist>
-    <pattern><![CDATA[for \( \w+ (\w+) = \w+ ; \1 < \w+ ; (\1 \+\+|\+\+ \1|\1 \-\-|\-\- \1) \) { \w+ \[ \1 \] = (?:\w+ :: )*\w+ \( \) ; }]]></pattern>
+    <pattern><![CDATA[for \( (?:(?:\w+|<|>|::) )*(?:\w+|>)(?: &|\*)* (\w+) = \w+ ; \1 < \w+ ; (\1 \+\+|\+\+ \1|\1 \-\-|\-\- \1) \) { \w+ \[ \1 \] = (?:\w+ :: )*\w+ \( \) ; }]]></pattern>
     <message>
         <id>useStlAlgorithm</id>
         <severity>style</severity>
@@ -28,7 +28,7 @@
 </rule>
 <rule>
     <tokenlist>normal</tokenlist>
-    <pattern><![CDATA[for \( \w+ (\w+) = \w+ ; \1 < \w+ ; (\1 \+\+|\+\+ \1|\1 \-\-|\-\- \1) \) { \w+ \[ \1 \] = (?:\w+ :: )*\w+ \( \w+ \[ \1 \] \) ; }]]></pattern>
+    <pattern><![CDATA[for \( (?:(?:\w+|<|>|::) )*(?:\w+|>)(?: &|\*)* (\w+) = \w+ ; \1 < \w+ ; (\1 \+\+|\+\+ \1|\1 \-\-|\-\- \1) \) { \w+ \[ \1 \] = (?:\w+ :: )*\w+ \( \w+ \[ \1 \] \) ; }]]></pattern>
     <message>
         <id>useStlAlgorithm</id>
         <severity>style</severity>
@@ -37,7 +37,7 @@
 </rule>
 <rule>
     <tokenlist>normal</tokenlist>
-    <pattern><![CDATA[for \( \w+ (\w+) = \w+ ; \1 < \w+ ; (\1 \+\+|\+\+ \1|\1 \-\-|\-\- \1) \) { \w+ \[ \1 \] = (?:\w+ :: )*\w+ \( \w+ \[ \1 \] , \w+ \[ \1 \] \) ; }]]></pattern>
+    <pattern><![CDATA[for \( (?:(?:\w+|<|>|::) )*(?:\w+|>)(?: &|\*)* (\w+) = \w+ ; \1 < \w+ ; (\1 \+\+|\+\+ \1|\1 \-\-|\-\- \1) \) { \w+ \[ \1 \] = (?:\w+ :: )*\w+ \( \w+ \[ \1 \] , \w+ \[ \1 \] \) ; }]]></pattern>
     <message>
         <id>useStlAlgorithm</id>
         <severity>style</severity>
