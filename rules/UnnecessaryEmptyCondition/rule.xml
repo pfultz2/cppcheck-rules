@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<rule>
+    <tokenlist>normal</tokenlist>
+    <pattern><![CDATA[if \( (\w) . empty \( \) \) { for \( (?:(?:\w+|<|>|::) )*(?:\w+|>)(?: &|\*)* \w : \1 \) ({[^{}]*(?1)*[^{}]*}) }]]></pattern>
+    <message>
+        <id>UnnecessaryEmptyCondition</id>
+        <severity>style</severity>
+        <summary>Unnecessary check for empty before for range loop.</summary>
+    </message>
+</rule>
+<rule>
+    <tokenlist>normal</tokenlist>
+    <pattern><![CDATA[if \( ! (\w) . empty \( \) \) { for \( (?:(?:\w+|<|>|::) )*(?:\w+|>)(?: &|\*)* \w : \1 \) ({[^{}]*(?1)*[^{}]*}) }]]></pattern>
+    <message>
+        <id>UnnecessaryEmptyCondition</id>
+        <severity>style</severity>
+        <summary>Unnecessary check for empty before for range loop.</summary>
+    </message>
+</rule>

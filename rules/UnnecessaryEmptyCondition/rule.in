@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<rule>
+    <tokenlist>normal</tokenlist>
+    <pattern><[if ( ($w) . empty ( ) ) { for ( $type $w : $1 ) {*} }]></pattern>
+    <message>
+        <id>UnnecessaryEmptyCondition</id>
+        <severity>style</severity>
+        <summary>Unnecessary check for empty before for range loop.</summary>
+    </message>
+</rule>
+<rule>
+    <tokenlist>normal</tokenlist>
+    <pattern><[if ( ! ($w) . empty ( ) ) { for ( $type $w : $1 ) {*} }]></pattern>
+    <message>
+        <id>UnnecessaryEmptyCondition</id>
+        <severity>style</severity>
+        <summary>Unnecessary check for empty before for range loop.</summary>
+    </message>
+</rule>
