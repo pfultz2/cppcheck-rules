@@ -44,3 +44,21 @@
         <summary>Considering using std::transform instead.</summary>
     </message>
 </rule>
+<rule>
+    <tokenlist>normal</tokenlist>
+    <pattern><[<% for_range_loop(q('(?:($w+) ++|++ ($w+)) ; if (*) { $w+ = $3|$4 ; (break ; )?}')) %>]></pattern>
+    <message>
+        <id>useStlAlgorithm</id>
+        <severity>style</severity>
+        <summary>Considering using std::find or std::find_if instead.</summary>
+    </message>
+</rule>
+<rule>
+    <tokenlist>normal</tokenlist>
+    <pattern><[<% for_range_loop(q('if (*) { $w+ = ($w) ; (break ; )?} (?:($3) ++|++ ($3)) ;')) %>]></pattern>
+    <message>
+        <id>useStlAlgorithm</id>
+        <severity>style</severity>
+        <summary>Considering using std::find or std::find_if instead.</summary>
+    </message>
+</rule>

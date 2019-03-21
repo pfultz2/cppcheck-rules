@@ -7,7 +7,10 @@ def paren():
     return "\\( [^()]+ \\)"
 
 def name():
-    return '(\\w+ :: )*\\w+'
+    return '(?:\\w+ :: )*\\w+'
+
+def type():
+    return '(?:(?:\\w+|<|>|::) )*(?:\\w+|>)(?: &|\\*)*'
 
 symbols = {
     '[': '\\[',
@@ -23,20 +26,32 @@ symbols = {
     '?': '\\?',
     '{*}': block(),
     '(*)': paren(),
-    '$name': name()
+    '$name': name(),
+    '$type': type()
 }
+
+prefix = [
+    '(?:',
+    '('
+]
+
+suffix = [
+    ')?',
+    ')'
+]
 
 def q_word(word):
     if word in symbols:
         return symbols[word]
-    elif word.startswith('(') and word != '(':
-        return '('+q_word(word[1:])
-    elif word.endswith(')') and word != ')':
-        return q_word(word[0:-1])+')'
     elif word.startswith('$'):
         return '\\'+word[1:]
-    else:
-        return word
+    for x in prefix:
+        if word.startswith(x) and word != x:
+            return x+q_word(word[len(x):])
+    for x in suffix:
+        if word.endswith(x) and word != x:
+            return q_word(word[0:-len(x)])+x
+    return word
 
 def q_words(s):
     words = s.split()
@@ -58,6 +73,9 @@ def q(s):
 
 def for_idx_loop(inner):
     return q("for ( $w+ ($w+) = $w+ ; $1 < $w+ ; ($1 ++|++ $1|$1 --|-- $1) ) {{ {} }}").format(inner)
+
+def for_range_loop(inner):
+    return q("for ( $type ($w+) : ([^()]+) ) {{ {} }}").format(inner)
 
 def template_eval(template, **kwargs):
     start = '<%'
