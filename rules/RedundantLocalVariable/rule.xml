@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<rule>
+    <tokenlist>normal</tokenlist>
+    <pattern><![CDATA[(?:(?:\w+|<|>|::) )*(?:\w+|>)(?: &|\*)* (\w) ; \1 = [^;]+ ; return \1 ;]]></pattern>
+    <message>
+        <id>RedundantLocalVariable</id>
+        <severity>style</severity>
+        <summary>Variable is returned immediately after its declaration, can be simplified to just return expression.</summary>
+    </message>
+</rule>
