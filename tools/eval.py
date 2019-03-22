@@ -12,6 +12,13 @@ def name():
 def type():
     return '(?:(?:\\w+|<|>|::) )*(?:\\w+|>)(?: &|\\*)*'
 
+def stmt():
+    wildcard = '[^{}]*'
+    return '(?:{wildcard}{block}{wildcard})*?'.format(wildcard=wildcard, block=block())
+
+def until_semi():
+    return '[^;]*;'
+
 symbols = {
     '[': '\\[',
     '[[': '[',
@@ -24,8 +31,10 @@ symbols = {
     '++': '\\+\\+',
     '--': '\\-\\-',
     '?': '\\?',
+    '*;': until_semi(),
     '{*}': block(),
     '(*)': paren(),
+    '$stmt': stmt(),
     '$name': name(),
     '$type': type()
 }
@@ -37,7 +46,9 @@ prefix = [
 
 suffix = [
     ')?',
-    ')'
+    ')',
+    '*',
+    '+'
 ]
 
 def q_word(word):
