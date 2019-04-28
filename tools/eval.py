@@ -1,10 +1,10 @@
 import re, sys
 
 def block():
-    return '({[^{}]*(?1)*[^{}]*})'
+    return '({[^{}]*(?-1)*[^{}]*})'
 
 def paren():
-    return "(\\([^()]*(?1)*[^()]*\\))"
+    return '(\\([^()]*(?-1)*[^()]*\\))'
 
 def name():
     return '(?:\\w+ :: )*\\w+'
@@ -15,6 +15,11 @@ def type():
 def stmt():
     wildcard = '[^{}]*'
     return '(?:{wildcard}{block}{wildcard})*?'.format(wildcard=wildcard, block=block())
+
+def until_paren():
+    wildcard1 = '[^()]*'
+    wildcard2 = '[^)]*\\)'
+    return '(?:{wildcard1}{paren})*{wildcard2}'.format(wildcard1=wildcard1, wildcard2=wildcard2, paren=paren())
 
 def until_semi():
     return '[^;]*;'
@@ -32,6 +37,7 @@ symbols = {
     '--': '\\-\\-',
     '?': '\\?',
     '*;': until_semi(),
+    '*)': until_paren(),
     '{*}': block(),
     '(*)': paren(),
     '$stmt': stmt(),
@@ -41,6 +47,8 @@ symbols = {
 
 prefix = [
     '(?:',
+    '(?>',
+    '(?|',
     '('
 ]
 
@@ -56,6 +64,9 @@ def q_word(word):
         return symbols[word]
     elif word.startswith('$'):
         return '\\'+word[1:]
+    elif word.startswith('(?<'):
+        idx = word.find('>')
+        return word[0:idx+1]+q_word(word[idx+1:])
     for x in prefix:
         if word.startswith(x) and word != x:
             return x+q_word(word[len(x):])
@@ -86,7 +97,8 @@ def for_idx_loop(inner):
     return q("for ( $type ($w+) = $w+ ; $1 < $w+ ; ($1 ++|++ $1|$1 --|-- $1) ) {{ {} }}").format(inner)
 
 def for_range_loop(inner):
-    return q("for ( $type ($w+) : ([^()]+) ) {{ {} }}").format(inner)
+    # return q("for ( $type ($w+) : ([^()]+) ) {{ {} }}").format(inner)
+    return q("for ( $type ($w+) : *) {{ {} }}").format(inner)
 
 def template_eval(template, **kwargs):
     start = '<%'

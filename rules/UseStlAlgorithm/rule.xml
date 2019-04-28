@@ -46,7 +46,7 @@
 </rule>
 <rule>
     <tokenlist>simple</tokenlist>
-    <pattern><![CDATA[for \( (?:(?:\w+|<|>|::) )*(?:\w+|>)(?: &|\*)* (\w+) : ([^()]+) \) { (?:(\w+) \+\+|\+\+ (\w+)) ; if (\([^()]*(?1)*[^()]*\)) { \w+ = \3|\4 ; (break ; )?(return [^;]*; )?} }]]></pattern>
+    <pattern><![CDATA[for \( (?:(?:\w+|<|>|::) )*(?:\w+|>)(?: &|\*)* (\w+) : (?:[^()]*(\([^()]*(?-1)*[^()]*\)))*[^)]*\) { (?:(?<idx1>\w+) \+\+|\+\+ (?<idx2>\w+)) ; if (\([^()]*(?-1)*[^()]*\)) { \w+ = \g{idx1}|\g{idx2} ; (?:break ; )?(?:return [^;]*; )?} }]]></pattern>
     <message>
         <id>useStlAlgorithm</id>
         <severity>style</severity>
@@ -55,7 +55,25 @@
 </rule>
 <rule>
     <tokenlist>simple</tokenlist>
-    <pattern><![CDATA[for \( (?:(?:\w+|<|>|::) )*(?:\w+|>)(?: &|\*)* (\w+) : ([^()]+) \) { if (\([^()]*(?1)*[^()]*\)) { \w+ = (\w) ; (break ; )?(return [^;]*; )?} (?:(\3) \+\+|\+\+ (\3)) ; }]]></pattern>
+    <pattern><![CDATA[for \( (?:(?:\w+|<|>|::) )*(?:\w+|>)(?: &|\*)* (\w+) : (?:[^()]*(\([^()]*(?-1)*[^()]*\)))*[^)]*\) { if (\([^()]*(?-1)*[^()]*\)) { \w+ = (?<idx>\w) ; (?:break ; )?(?:return [^;]*; )?} (?:(\g{idx}) \+\+|\+\+ (\g{idx})) ; }]]></pattern>
+    <message>
+        <id>useStlAlgorithm</id>
+        <severity>style</severity>
+        <summary>Considering using std::find or std::find_if instead.</summary>
+    </message>
+</rule>
+<rule>
+    <tokenlist>simple</tokenlist>
+    <pattern><![CDATA[for \( (?:(?:\w+|<|>|::) )*(?:\w+|>)(?: &|\*)* (\w+) : (?:[^()]*(\([^()]*(?-1)*[^()]*\)))*[^)]*\) { (?:(?<idx1>\w+) \+\+|\+\+ (?<idx2>\w+)) ; if (\([^()]*(?-1)*[^()]*\)) { return \g{idx1}|\g{idx2} ; } }]]></pattern>
+    <message>
+        <id>useStlAlgorithm</id>
+        <severity>style</severity>
+        <summary>Considering using std::find or std::find_if instead.</summary>
+    </message>
+</rule>
+<rule>
+    <tokenlist>simple</tokenlist>
+    <pattern><![CDATA[for \( (?:(?:\w+|<|>|::) )*(?:\w+|>)(?: &|\*)* (\w+) : (?:[^()]*(\([^()]*(?-1)*[^()]*\)))*[^)]*\) { if (\([^()]*(?-1)*[^()]*\)) { return (?<idx>\w) ; } (?:(\g{idx}) \+\+|\+\+ (\g{idx})) ; }]]></pattern>
     <message>
         <id>useStlAlgorithm</id>
         <severity>style</severity>

@@ -46,7 +46,7 @@
 </rule>
 <rule>
     <tokenlist>simple</tokenlist>
-    <pattern><[<% for_range_loop(q('(?:($w+) ++|++ ($w+)) ; if (*) { $w+ = $3|$4 ; (break ; )?(return *; )?}')) %>]></pattern>
+    <pattern><[<% for_range_loop(q('(?:(?<idx1>$w+) ++|++ (?<idx2>$w+)) ; if (*) { $w+ = $g{idx1}|$g{idx2} ; (?:break ; )?(?:return *; )?}')) %>]></pattern>
     <message>
         <id>useStlAlgorithm</id>
         <severity>style</severity>
@@ -55,7 +55,25 @@
 </rule>
 <rule>
     <tokenlist>simple</tokenlist>
-    <pattern><[<% for_range_loop(q('if (*) { $w+ = ($w) ; (break ; )?(return *; )?} (?:($3) ++|++ ($3)) ;')) %>]></pattern>
+    <pattern><[<% for_range_loop(q('if (*) { $w+ = (?<idx>$w) ; (?:break ; )?(?:return *; )?} (?:($g{idx}) ++|++ ($g{idx})) ;')) %>]></pattern>
+    <message>
+        <id>useStlAlgorithm</id>
+        <severity>style</severity>
+        <summary>Considering using std::find or std::find_if instead.</summary>
+    </message>
+</rule>
+<rule>
+    <tokenlist>simple</tokenlist>
+    <pattern><[<% for_range_loop(q('(?:(?<idx1>$w+) ++|++ (?<idx2>$w+)) ; if (*) { return $g{idx1}|$g{idx2} ; }')) %>]></pattern>
+    <message>
+        <id>useStlAlgorithm</id>
+        <severity>style</severity>
+        <summary>Considering using std::find or std::find_if instead.</summary>
+    </message>
+</rule>
+<rule>
+    <tokenlist>simple</tokenlist>
+    <pattern><[<% for_range_loop(q('if (*) { return (?<idx>$w) ; } (?:($g{idx}) ++|++ ($g{idx})) ;')) %>]></pattern>
     <message>
         <id>useStlAlgorithm</id>
         <severity>style</severity>

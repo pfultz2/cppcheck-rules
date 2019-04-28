@@ -69,4 +69,14 @@ bool f5(std::vector<int> v)
     return found > 0;
 }
 
-
+int f6(A a, int x)
+{
+    int i = 0;
+    for(auto&& y : a->f().g())
+    {
+        if(y == x)
+            return i;
+        i++;
+    }
+    return -1;
+}

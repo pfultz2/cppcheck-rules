@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <rule>
     <tokenlist>normal</tokenlist>
-    <pattern><![CDATA[(for|while) (\([^()]*(?1)*[^()]*\)) { (?:[^{}]*({[^{}]*(?1)*[^{}]*})[^{}]*)*? (break|continue|return) [^;]*; }]]></pattern>
+    <pattern><![CDATA[(for|while) (\([^()]*(?-1)*[^()]*\)) { (?:[^{}]*({[^{}]*(?-1)*[^{}]*})[^{}]*)*? (break|continue|return) [^;]*; }]]></pattern>
     <message>
         <id>AvoidBranchingStatementAsLastInLoop</id>
         <severity>style</severity>

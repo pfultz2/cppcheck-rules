@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <rule>
     <tokenlist>normal</tokenlist>
-    <pattern><![CDATA[if (\([^()]*(?1)*[^()]*\)) { assert (\([^()]*(?1)*[^()]*\)) ; }]]></pattern>
+    <pattern><![CDATA[if (\([^()]*(?-1)*[^()]*\)) { assert (\([^()]*(?-1)*[^()]*\)) ; }]]></pattern>
     <message>
         <id>ConditionalAssert</id>
         <severity>style</severity>
