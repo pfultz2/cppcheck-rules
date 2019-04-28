@@ -1,10 +1,10 @@
 import re, sys
 
 def block():
-    return '(?:{[^{}]*(?R)*[^{}]*})'
+    return '({[^{}]*(?1)*[^{}]*})'
 
 def paren():
-    return "(?:\\([^()]*(?R)*[^()]*\\))"
+    return "(\\([^()]*(?1)*[^()]*\\))"
 
 def name():
     return '(?:\\w+ :: )*\\w+'

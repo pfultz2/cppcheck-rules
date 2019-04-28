@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <rule>
     <tokenlist>normal</tokenlist>
-    <pattern><![CDATA[if (?:\([^()]*(?R)*[^()]*\)) { [^{}]* (return|throw|break|continue) [^;]* ; } else {]]></pattern>
+    <pattern><![CDATA[if (\([^()]*(?1)*[^()]*\)) { [^{}]* (return|throw|break|continue) [^;]* ; } else {]]></pattern>
     <message>
         <id>UnnecessaryElseStatement</id>
         <severity>style</severity>

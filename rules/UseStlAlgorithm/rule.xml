@@ -46,7 +46,7 @@
 </rule>
 <rule>
     <tokenlist>simple</tokenlist>
-    <pattern><![CDATA[for \( (?:(?:\w+|<|>|::) )*(?:\w+|>)(?: &|\*)* (\w+) : ([^()]+) \) { (?:(\w+) \+\+|\+\+ (\w+)) ; if (?:\([^()]*(?R)*[^()]*\)) { \w+ = \3|\4 ; (break ; )?(return [^;]*; )?} }]]></pattern>
+    <pattern><![CDATA[for \( (?:(?:\w+|<|>|::) )*(?:\w+|>)(?: &|\*)* (\w+) : ([^()]+) \) { (?:(\w+) \+\+|\+\+ (\w+)) ; if (\([^()]*(?1)*[^()]*\)) { \w+ = \3|\4 ; (break ; )?(return [^;]*; )?} }]]></pattern>
     <message>
         <id>useStlAlgorithm</id>
         <severity>style</severity>
@@ -55,7 +55,7 @@
 </rule>
 <rule>
     <tokenlist>simple</tokenlist>
-    <pattern><![CDATA[for \( (?:(?:\w+|<|>|::) )*(?:\w+|>)(?: &|\*)* (\w+) : ([^()]+) \) { if (?:\([^()]*(?R)*[^()]*\)) { \w+ = (\w) ; (break ; )?(return [^;]*; )?} (?:(\3) \+\+|\+\+ (\3)) ; }]]></pattern>
+    <pattern><![CDATA[for \( (?:(?:\w+|<|>|::) )*(?:\w+|>)(?: &|\*)* (\w+) : ([^()]+) \) { if (\([^()]*(?1)*[^()]*\)) { \w+ = (\w) ; (break ; )?(return [^;]*; )?} (?:(\3) \+\+|\+\+ (\3)) ; }]]></pattern>
     <message>
         <id>useStlAlgorithm</id>
         <severity>style</severity>
