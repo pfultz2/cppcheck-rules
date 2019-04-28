@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <rule>
-    <tokenlist>normal</tokenlist>
+    <tokenlist>simple</tokenlist>
     <pattern><[<% for_idx_loop(q('$w+ [ $1 ] = $w+ [ $1 ] ;')) %>]></pattern>
     <message>
         <id>useStlAlgorithm</id>
@@ -9,7 +9,7 @@
     </message>
 </rule>
 <rule>
-    <tokenlist>normal</tokenlist>
+    <tokenlist>simple</tokenlist>
     <pattern><[<% for_idx_loop(q('$w+ [ $1 ] = $w+ ;')) %>]></pattern>
     <message>
         <id>useStlAlgorithm</id>
@@ -18,7 +18,7 @@
     </message>
 </rule>
 <rule>
-    <tokenlist>normal</tokenlist>
+    <tokenlist>simple</tokenlist>
     <pattern><[<% for_idx_loop(q('$w+ [ $1 ] = $name ( ) ;')) %>]></pattern>
     <message>
         <id>useStlAlgorithm</id>
@@ -27,7 +27,7 @@
     </message>
 </rule>
 <rule>
-    <tokenlist>normal</tokenlist>
+    <tokenlist>simple</tokenlist>
     <pattern><[<% for_idx_loop(q('$w+ [ $1 ] = $name ( $w+ [ $1 ] ) ;')) %>]></pattern>
     <message>
         <id>useStlAlgorithm</id>
@@ -36,7 +36,7 @@
     </message>
 </rule>
 <rule>
-    <tokenlist>normal</tokenlist>
+    <tokenlist>simple</tokenlist>
     <pattern><[<% for_idx_loop(q('$w+ [ $1 ] = $name ( $w+ [ $1 ] , $w+ [ $1 ] ) ;')) %>]></pattern>
     <message>
         <id>useStlAlgorithm</id>
@@ -45,7 +45,7 @@
     </message>
 </rule>
 <rule>
-    <tokenlist>normal</tokenlist>
+    <tokenlist>simple</tokenlist>
     <pattern><[<% for_range_loop(q('(?:($w+) ++|++ ($w+)) ; if (*) { $w+ = $3|$4 ; (break ; )?(return *; )?}')) %>]></pattern>
     <message>
         <id>useStlAlgorithm</id>
@@ -54,7 +54,7 @@
     </message>
 </rule>
 <rule>
-    <tokenlist>normal</tokenlist>
+    <tokenlist>simple</tokenlist>
     <pattern><[<% for_range_loop(q('if (*) { $w+ = ($w) ; (break ; )?(return *; )?} (?:($3) ++|++ ($3)) ;')) %>]></pattern>
     <message>
         <id>useStlAlgorithm</id>
