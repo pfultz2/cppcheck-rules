@@ -55,4 +55,18 @@ bool f4(std::vector<int> v)
     return found > 0;
 }
 
+bool f5(std::vector<int> v)
+{
+    int i = 0;
+    int found = -1;
+    for(const auto& x : v) {
+        if(x == 1) {
+            found = i;
+            return true;
+        }
+        i++;
+    }
+    return found > 0;
+}
+
 

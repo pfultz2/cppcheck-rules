@@ -5,6 +5,6 @@
     <message>
         <id>AvoidBranchingStatementAsLastInLoop</id>
         <severity>style</severity>
-        <summary>Messeage.</summary>
+        <summary>Branching statement as the last statement inside a loop is very confusing.</summary>
     </message>
 </rule>
