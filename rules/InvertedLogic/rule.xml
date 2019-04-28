@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <rule>
     <tokenlist>normal</tokenlist>
-    <pattern><![CDATA[if \( \w+ != \w+ \) ({[^{}]*(?1)*[^{}]*}) else { (?!if)]]></pattern>
+    <pattern><![CDATA[if \( \w+ != \w+ \) (?:{[^{}]*(?R)*[^{}]*}) else { (?!if)]]></pattern>
     <message>
         <id>InvertedLogic</id>
         <severity>style</severity>
@@ -10,7 +10,7 @@
 </rule>
 <rule>
     <tokenlist>normal</tokenlist>
-    <pattern><![CDATA[if \( ! \w+ \) ({[^{}]*(?1)*[^{}]*}) else { (?!if)]]></pattern>
+    <pattern><![CDATA[if \( ! \w+ \) (?:{[^{}]*(?R)*[^{}]*}) else { (?!if)]]></pattern>
     <message>
         <id>InvertedLogic</id>
         <severity>style</severity>

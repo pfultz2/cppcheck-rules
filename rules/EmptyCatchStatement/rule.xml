@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <rule>
     <tokenlist>normal</tokenlist>
-    <pattern><![CDATA[catch \( [^()]+ \) { }]]></pattern>
+    <pattern><![CDATA[catch (?:\([^()]*(?R)*[^()]*\)) { }]]></pattern>
     <message>
         <id>EmptyCatchStatement</id>
         <severity>style</severity>

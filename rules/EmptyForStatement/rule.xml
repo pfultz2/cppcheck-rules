@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <rule>
     <tokenlist>normal</tokenlist>
-    <pattern><![CDATA[for \( [^()]+ \) { }]]></pattern>
+    <pattern><![CDATA[for (?:\([^()]*(?R)*[^()]*\)) { }]]></pattern>
     <message>
         <id>EmptyForStatement</id>
         <severity>style</severity>

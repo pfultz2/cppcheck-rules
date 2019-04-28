@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <rule>
     <tokenlist>normal</tokenlist>
-    <pattern><![CDATA[if \( [^()]+ \) { }]]></pattern>
+    <pattern><![CDATA[if (?:\([^()]*(?R)*[^()]*\)) { }]]></pattern>
     <message>
         <id>EmptyIfStatement</id>
         <severity>style</severity>

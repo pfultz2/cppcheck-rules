@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <rule>
     <tokenlist>normal</tokenlist>
-    <pattern><![CDATA[while \( [^()]+ \) { }]]></pattern>
+    <pattern><![CDATA[while (?:\([^()]*(?R)*[^()]*\)) { }]]></pattern>
     <message>
         <id>EmptyWhileStatement</id>
         <severity>style</severity>

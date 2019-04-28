@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <rule>
     <tokenlist>normal</tokenlist>
-    <pattern><![CDATA[switch \( [^()]+ \) { }]]></pattern>
+    <pattern><![CDATA[switch (?:\([^()]*(?R)*[^()]*\)) { }]]></pattern>
     <message>
         <id>EmptySwitchStatement</id>
         <severity>style</severity>
