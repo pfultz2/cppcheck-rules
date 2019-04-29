@@ -55,7 +55,7 @@
 </rule>
 <rule>
     <tokenlist>simple</tokenlist>
-    <pattern><[<% for_range_loop(q('if (*) { $w+ = (?<idx>$w) ; (?:break ; )?(?:return *; )?} (?:($g{idx}) ++|++ ($g{idx})) ;')) %>]></pattern>
+    <pattern><[<% for_range_loop(q('if (*) { $w+ = (?<idx>$w+) ; (?:break ; )?(?:return *; )?} (?:($g{idx}) ++|++ ($g{idx})) ;')) %>]></pattern>
     <message>
         <id>useStlAlgorithm</id>
         <severity>style</severity>
@@ -73,7 +73,7 @@
 </rule>
 <rule>
     <tokenlist>simple</tokenlist>
-    <pattern><[<% for_range_loop(q('if (*) { return (?<idx>$w) ; } (?:($g{idx}) ++|++ ($g{idx})) ;')) %>]></pattern>
+    <pattern><[<% for_range_loop(q('if (*) { return (?<idx>$w+) ; } (?:($g{idx}) ++|++ ($g{idx})) ;')) %>]></pattern>
     <message>
         <id>useStlAlgorithm</id>
         <severity>style</severity>
