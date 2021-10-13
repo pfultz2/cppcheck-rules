@@ -62,8 +62,6 @@ suffix = [
 def q_word(word):
     if word in symbols:
         return symbols[word]
-    elif word.startswith('$'):
-        return '\\'+word[1:]
     elif word.startswith('(?<'):
         idx = word.find('>')
         return word[0:idx+1]+q_word(word[idx+1:])
@@ -73,6 +71,8 @@ def q_word(word):
     for x in suffix:
         if word.endswith(x) and word != x:
             return q_word(word[0:-len(x)])+x
+    if word.startswith('$'):
+        return '\\'+word[1:]
     return word
 
 def q_words(s):
