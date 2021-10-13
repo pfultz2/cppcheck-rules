@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<rule>
+    <tokenlist>normal</tokenlist>
+    <pattern><[($type) ($w) ; $2 = static_cast < $1 > (*) ;]></pattern>
+    <message>
+        <id>RedundantCast</id>
+        <severity>style</severity>
+        <summary>Static cast is redundant.</summary>
+    </message>
+</rule>
+<rule>
+    <tokenlist>normal</tokenlist>
+    <pattern><[auto ($w) ; $1 = static_cast < $type > (*) ;]></pattern>
+    <message>
+        <id>RedundantCast</id>
+        <severity>style</severity>
+        <summary>Static cast is redundant.</summary>
+    </message>
+</rule>
