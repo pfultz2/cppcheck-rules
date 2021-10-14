@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<rule>
+    <tokenlist>normal</tokenlist>
+    <pattern><[if|while|for|switch (*) { {*} }]></pattern>
+    <message>
+        <id>NestedBlocks</id>
+        <severity>style</severity>
+        <summary>Block directly inside block.</summary>
+    </message>
+</rule>
+<rule>
+    <tokenlist>normal</tokenlist>
+    <pattern><[; { {*} break ; }]></pattern>
+    <message>
+        <id>NestedBlocks</id>
+        <severity>style</severity>
+        <summary>Block directly inside block.</summary>
+    </message>
+</rule>
