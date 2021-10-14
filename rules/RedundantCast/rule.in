@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <rule>
     <tokenlist>normal</tokenlist>
-    <pattern><[($type) ($w) ; $2 = static_cast < $1 > (*) ;]></pattern>
+    <pattern><[($type) ($w+) ; $2 = static_cast < $1 > (*) ;]></pattern>
     <message>
         <id>RedundantCast</id>
         <severity>style</severity>
@@ -10,7 +10,7 @@
 </rule>
 <rule>
     <tokenlist>normal</tokenlist>
-    <pattern><[auto ($w) ; $1 = static_cast < $type > (*) ;]></pattern>
+    <pattern><[auto ($w+) ; $1 = static_cast < $type > (*) ;]></pattern>
     <message>
         <id>RedundantCast</id>
         <severity>style</severity>

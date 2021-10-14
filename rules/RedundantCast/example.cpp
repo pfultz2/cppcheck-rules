@@ -1,4 +1,4 @@
 void f(int i) {
-    float x = static_cast<float>(i);
-    auto y = static_cast<float>(i);
+    float xx = static_cast<float>(i);
+    auto yy = static_cast<float>(i);
 }
